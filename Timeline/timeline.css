@@ -86,7 +86,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-  
+    overflow: hidden;
     position: relative;
   }
   .ag-timeline_line {
@@ -349,4 +349,8 @@
 
   .left-align {
     text-align: left;
+  }
+
+  .center-align {
+    text-align: center;
   }
