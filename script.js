@@ -72,3 +72,25 @@ $(document).ready(function () {
     });
 
 });
+
+
+//send mail fucntion 
+document.getElementById('communicationForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var form = event.target;
+    var formData = new FormData(form);
+    var endpoint = 'https://prod-11.centralindia.logic.azure.com:443/workflows/50055c2c8f3641858b066789a1e1fa7f/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tsKCSTnM-7f-w337I4pejq_RkAl3O1qJ4pvz5VkvwAU';
+
+    fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(Object.fromEntries(formData)),
+    }).then(function (response) {
+        alert('Email sent successfully!');
+    }).catch(function (error) {
+        alert('Failed to send email.');
+    });
+});
