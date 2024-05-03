@@ -73,6 +73,16 @@ $(document).ready(function () {
 
 });
 
+//Certifications section
+document.querySelectorAll('#image-container img').forEach(function(img) {
+    img.addEventListener('mouseenter', function() {
+      document.getElementById('image-container').classList.add('paused');
+    });
+    img.addEventListener('mouseleave', function() {
+      document.getElementById('image-container').classList.remove('paused');
+    });
+  });
+  
 
 //send mail fucntion 
 document.getElementById('communicationForm').addEventListener('submit', function (event) {
@@ -80,6 +90,7 @@ document.getElementById('communicationForm').addEventListener('submit', function
 
     var form = event.target;
     var formData = new FormData(form);
+    //logic app integration
     var endpoint = 'https://prod-11.centralindia.logic.azure.com:443/workflows/50055c2c8f3641858b066789a1e1fa7f/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tsKCSTnM-7f-w337I4pejq_RkAl3O1qJ4pvz5VkvwAU';
 
     fetch(endpoint, {
@@ -93,4 +104,4 @@ document.getElementById('communicationForm').addEventListener('submit', function
     }).catch(function (error) {
         alert('Failed to send email.');
     });
-});
+}); 
